@@ -13,10 +13,10 @@ int main(int argc, char const *argv[])
             system("clear");
 
         system("gcc -c ../main.c");
-        //system("gcc -c ../library/generate.c");
-        system("gcc -o WorgenX.exe main.o");
+        system("gcc -c ../library/menu.c");
+        system("gcc -o WorgenX.exe main.o menu.o");
 
-        //system("mv xml.o ../library/xml.o");
+        system("mv menu.o ../library/menu.o");
         system("mv main.o ../main.o");
         system("mv WorgenX.exe ../WorgenX.exe");
 
