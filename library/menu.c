@@ -65,7 +65,7 @@ bool allocateConfig(GEN_CONFIG * wordlistConfig){
 
     printf("\nWish type of character you want to use ? \n");
     printf("Letters ? y/n \n");
-
+    emptyBuffer();
     scanf("%c", &choice);
 
     if (choice == 'y' || choice == 'Y'){
