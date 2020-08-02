@@ -8,14 +8,7 @@
 
 #include "../includes/struct.h"
 #include "../includes/menu.h"
-
-/* Function charged to empty the buffer */
-void emptyBuffer()
-{
-    int16_t buffer = 0;
-    while (buffer != '\n' && buffer != EOF)
-        buffer = getchar();
-}
+#include "../includes/system.h"
 
 /* Function charged to force the user to specify a valid length */
 int64_t validLength()
@@ -64,18 +57,32 @@ bool allocateConfig(GEN_CONFIG * wordlistConfig){
     bool check = false;
 
     printf("\nWish type of character you want to use ? \n");
-    printf("Letters ? y/n \n");
+    printf("Letters (uppercase) ? y/n \n");
     emptyBuffer();
     scanf("%c", &choice);
 
     if (choice == 'y' || choice == 'Y'){
 
-        wordlistConfig->letters = true;
+        wordlistConfig->uppercaseLetters = true;
         check = true;
     }
         
     else
-        wordlistConfig->letters = false;
+        wordlistConfig->uppercaseLetters = false;
+
+    printf("Letters (lowercase) ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+
+        wordlistConfig->lowercaseLetters = true;
+        check = true;
+    }
+
+    else
+        wordlistConfig->lowercaseLetters = false;
 
     printf("Numbers ? y/n \n");
     emptyBuffer();

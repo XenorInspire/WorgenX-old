@@ -9,10 +9,12 @@ Made by Xen0rInspire */
 
 #include "includes/struct.h"
 #include "includes/menu.h"
+#include "includes/system.h"
 
 int main(int argc, char const *argv[])
 {
 
+    GEN_CONFIG wordlistConfig;
     char choice;
 
     displayTitle(30);
@@ -25,7 +27,6 @@ int main(int argc, char const *argv[])
 
     while (choice == '1')
     {
-        GEN_CONFIG wordlistConfig;
 
         while (allocateConfig(&wordlistConfig) == false)
         {
@@ -33,11 +34,21 @@ int main(int argc, char const *argv[])
         }
 
         wordlistConfig.length = validLength();
+        wordslistFile(&wordlistConfig);
+
+        //printf("numbers : %d \n",wordlistConfig.numbers);
+        //printf("special char : %d \n",wordlistConfig.specialCharacters);
+        //printf("letters (lowercase) : %d \n", wordlistConfig.lowercaseLetters);
+        //printf("letters (uppercase) : %d \n", wordlistConfig.uppercaseLetters);
+        //printf("length : %ld \n", wordlistConfig.length);
+        //printf("file name : %s \n", wordlistConfig.fileName);
+
+        free(wordlistConfig.fileName);
 
         printf("\n Do you want to create another wordlist ?\n");
         printf("1 : Yes\n0 : No \n");
-        emptyBuffer();
         scanf("%c", &choice);
+
     }
 
     return 0;

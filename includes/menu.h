@@ -8,9 +8,6 @@
 /* Function charged to create a beautiful menu x) */
 void displayTitle(int8_t max);
 
-/* Function charged to empty the buffer */
-void emptyBuffer();
-
 /* Function charged to force the user to specify a valid length */
 int64_t validLength();
 

@@ -8,7 +8,8 @@ typedef struct genConfig {
 
     bool numbers;
     bool specialCharacters;
-    bool letters;
+    bool uppercaseLetters;
+    bool lowercaseLetters;
     int64_t length;
     char * fileName;
 
