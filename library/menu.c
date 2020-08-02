@@ -1,3 +1,5 @@
+/* Functions used to build the program's menu and the wordlist config*/
+
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,8 +8,6 @@
 
 #include "../includes/struct.h"
 #include "../includes/menu.h"
-
-#define MAX_LENGTH 50
 
 /* Function charged to empty the buffer */
 void emptyBuffer()

@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define MAX_LENGTH 50
+
 /* Function charged to create a beautiful menu x) */
 void displayTitle(int8_t max);
 

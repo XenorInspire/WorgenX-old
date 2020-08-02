@@ -10,5 +10,6 @@ typedef struct genConfig {
     bool specialCharacters;
     bool letters;
     int64_t length;
+    char * fileName;
 
 } GEN_CONFIG;

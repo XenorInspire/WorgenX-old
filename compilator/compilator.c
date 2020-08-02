@@ -14,15 +14,17 @@ int main(int argc, char const *argv[])
 
         system("gcc -c ../main.c");
         system("gcc -c ../library/menu.c");
-        system("gcc -o WorgenX.exe main.o menu.o");
+        system("gcc -c ../library/system.c");
+        system("gcc -o WorgenX.exe main.o system.o menu.o");
 
         system("mv menu.o ../library/menu.o");
         system("mv main.o ../main.o");
+        system("mv system.o ../library/system.o");
         system("mv WorgenX.exe ../WorgenX.exe");
 
         printf("Recompiler ? (o/n) \n");
         fflush(stdin);
-        scanf("%c", &choice);
+        choice = getchar();
     }
 
     return 0;
