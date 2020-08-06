@@ -10,7 +10,17 @@ typedef struct genConfig {
     bool specialCharacters;
     bool uppercaseLetters;
     bool lowercaseLetters;
+    bool variableLength;
     int64_t length;
     char * fileName;
 
 } GEN_CONFIG;
+
+/* Wordlist content*/
+typedef struct wordlistChars {
+
+    char * content;
+    int64_t size;
+    GEN_CONFIG * wordlistConfig;
+
+} WDL_CHARS;
