@@ -14,6 +14,7 @@ typedef struct genConfig
     bool variableLength;
     int64_t length;
     char *fileName;
+    FILE * log;
 
 } GEN_CONFIG;
 

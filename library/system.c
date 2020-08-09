@@ -17,6 +17,7 @@ void emptyBuffer()
         buffer = getchar();
 }
 
+/* Function charged to allocate a name to the wordlist file */
 void wordslistFile(GEN_CONFIG *wordlistConfig)
 {
 
@@ -32,7 +33,7 @@ void wordslistFile(GEN_CONFIG *wordlistConfig)
     verifyExtension(wordlistConfig->fileName);
 }
 
-// Check if the file name has only one txt extension (or not)
+/* Check if the file name has only one txt extension (or not) */
 char *verifyExtension(char *fileName)
 {
 
@@ -67,7 +68,7 @@ char *verifyExtension(char *fileName)
     return fileName;
 }
 
-// Check if a simple char pointer is NULL
+/* Check if a simple char pointer is NULL */
 void checkSimplePtr(char *ptr)
 {
 
@@ -77,4 +78,12 @@ void checkSimplePtr(char *ptr)
         SLEEP(3000);
         exit(0);
     }
+}
+
+/* This function is used to save and display the password in the wordlist file */
+void savePasswd(FILE *log, char *passwd)
+{
+
+    printf("%s \n", passwd);
+    fprintf(log, "%s \n", passwd);
 }

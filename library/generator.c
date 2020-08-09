@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "../includes/struct.h"
 #include "../includes/generator.h"
@@ -20,12 +21,6 @@ int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode)
 
     WDL_CHARS wordlistContent = createContent(wordlistConfig);
 
-    // for (int64_t i = 0; i < wordlistContent.size; i++)
-    // {
-    //     printf("|%c|",wordlistContent.content[i]);
-    // }
-    // printf("\n");
-
     if (mode == FIXED_LENGTH)
     {
 
@@ -36,6 +31,7 @@ int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode)
     }
 
     free(wordlistContent.content);
+    calculateSize(wordlistContent.size, wordlistConfig->length);
 
     return 0;
 }
@@ -150,10 +146,11 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 /* Function charged to generate the password from the dictionary */
 void createPasswd(WDL_CHARS *wordlistContent)
 {
-
     int16_t count = 0;
     bool end = false;
     char *passwd;
+
+    wordlistContent->wordlistConfig->log = fopen(wordlistContent->wordlistConfig->fileName, "ab");
     passwd = malloc((wordlistContent->wordlistConfig->length + 1) * sizeof(char));
     checkSimplePtr(passwd);
 
@@ -166,13 +163,11 @@ void createPasswd(WDL_CHARS *wordlistContent)
     }
 
     passwd[wordlistContent->wordlistConfig->length] = '\0';
-
-    //envoyer le passwd au fichier et sur stdin
+    savePasswd(wordlistContent->wordlistConfig->log, passwd);
 
     while (end == false)
     {
         index[wordlistContent->wordlistConfig->length - 1]++;
-
         for (int j = wordlistContent->wordlistConfig->length - 1; j >= 0; j--)
         {
             if (index[j] == wordlistContent->size)
@@ -196,9 +191,18 @@ void createPasswd(WDL_CHARS *wordlistContent)
         else
             count = 0;
 
-        //envoyer le passwd au fichier et sur stdin
+        savePasswd(wordlistContent->wordlistConfig->log, passwd);
     }
 
     free(passwd);
-    //fermeture du fichier
+    fclose(wordlistContent->wordlistConfig->log);
+}
+
+/* Display the size of the wordlist */
+void calculateSize(int64_t wordlistSize, int64_t length){
+
+    double totalSize;
+    totalSize = pow((double) wordlistSize, (double) length);
+    printf("Number of passwords : %.lf \n", totalSize);
+
 }

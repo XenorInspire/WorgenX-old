@@ -33,3 +33,6 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 
 /* Function charged to generate the password from the dictionary */
 void createPasswd(WDL_CHARS *wordlistContent);
+
+/* Display the size of the wordlist */
+void calculateSize(int64_t wordlistSize, int64_t length);
