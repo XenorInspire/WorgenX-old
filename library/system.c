@@ -17,7 +17,8 @@ void emptyBuffer()
         buffer = getchar();
 }
 
-void wordslistFile(GEN_CONFIG * wordlistConfig){
+void wordslistFile(GEN_CONFIG *wordlistConfig)
+{
 
     wordlistConfig->fileName = malloc(SIZE_FILE_NAME * sizeof(char));
     checkSimplePtr(wordlistConfig->fileName);
@@ -32,7 +33,7 @@ void wordslistFile(GEN_CONFIG * wordlistConfig){
 }
 
 // Check if the file name has only one txt extension (or not)
-char * verifyExtension(char * fileName)
+char *verifyExtension(char *fileName)
 {
 
     // If there isn't a .txt extension

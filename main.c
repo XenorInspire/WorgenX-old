@@ -36,10 +36,10 @@ int main(int argc, char const *argv[])
 
         wordlistConfig.length = validLength();
         wordslistFile(&wordlistConfig);
-        if(generateWordlist(&wordlistConfig, FIXED_LENGTH) != 0){
+        if (generateWordlist(&wordlistConfig, FIXED_LENGTH) != 0)
+        {
 
             printf("Error \n");
-
         }
 
         //printf("numbers : %d \n",wordlistConfig.numbers);
@@ -55,7 +55,6 @@ int main(int argc, char const *argv[])
         printf("\n Do you want to create another wordlist ?\n");
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
-
     }
 
     return 0;

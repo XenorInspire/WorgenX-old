@@ -4,7 +4,8 @@
 #include <stdint.h>
 
 /* Configuration of the wordlist */
-typedef struct genConfig {
+typedef struct genConfig
+{
 
     bool numbers;
     bool specialCharacters;
@@ -12,15 +13,16 @@ typedef struct genConfig {
     bool lowercaseLetters;
     bool variableLength;
     int64_t length;
-    char * fileName;
+    char *fileName;
 
 } GEN_CONFIG;
 
 /* Wordlist content*/
-typedef struct wordlistChars {
+typedef struct wordlistChars
+{
 
-    char * content;
+    char *content;
     int64_t size;
-    GEN_CONFIG * wordlistConfig;
+    GEN_CONFIG *wordlistConfig;
 
 } WDL_CHARS;

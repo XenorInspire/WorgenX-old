@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../includes/struct.h"
 #include "../includes/generator.h"
@@ -19,12 +20,21 @@ int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode)
 
     WDL_CHARS wordlistContent = createContent(wordlistConfig);
 
-    for (int64_t i = 0; i < wordlistContent.size; i++)
+    // for (int64_t i = 0; i < wordlistContent.size; i++)
+    // {
+    //     printf("|%c|",wordlistContent.content[i]);
+    // }
+    // printf("\n");
+
+    if (mode == FIXED_LENGTH)
     {
-        printf("|%c|",wordlistContent.content[i]);
+
+        createPasswd(&wordlistContent);
     }
-    printf("\n");
-    
+    else if (mode == VARIABLE_LENGTH)
+    {
+    }
+
     free(wordlistContent.content);
 
     return 0;
@@ -132,8 +142,63 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 
         free(content);
         content = newContent;
-
     }
 
     return content;
+}
+
+/* Function charged to generate the password from the dictionary */
+void createPasswd(WDL_CHARS *wordlistContent)
+{
+
+    int16_t count = 0;
+    bool end = false;
+    char *passwd;
+    passwd = malloc((wordlistContent->wordlistConfig->length + 1) * sizeof(char));
+    checkSimplePtr(passwd);
+
+    int16_t index[wordlistContent->wordlistConfig->length];
+
+    for (int16_t i = 0; i < wordlistContent->wordlistConfig->length; i++)
+    {
+        index[i] = 0;
+        passwd[i] = wordlistContent->content[index[i]];
+    }
+
+    passwd[wordlistContent->wordlistConfig->length] = '\0';
+
+    //envoyer le passwd au fichier et sur stdin
+
+    while (end == false)
+    {
+        index[wordlistContent->wordlistConfig->length - 1]++;
+
+        for (int j = wordlistContent->wordlistConfig->length - 1; j >= 0; j--)
+        {
+            if (index[j] == wordlistContent->size)
+            {
+
+                index[j] = 0;
+                if (j != 0)
+                    index[j - 1]++;
+            }
+        }
+
+        for (int i = 0; i < wordlistContent->wordlistConfig->length; i++)
+        {
+            passwd[i] = wordlistContent->content[index[i]];
+            if (passwd[i] == wordlistContent->content[wordlistContent->size - 1])
+                count++;
+        }
+
+        if (count == wordlistContent->wordlistConfig->length)
+            end = true;
+        else
+            count = 0;
+
+        //envoyer le passwd au fichier et sur stdin
+    }
+
+    free(passwd);
+    //fermeture du fichier
 }
