@@ -35,4 +35,4 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 void createPasswd(WDL_CHARS *wordlistContent);
 
 /* Display the size of the wordlist */
-void calculateSize(int64_t wordlistSize, int64_t length);
+double calculateSize(int64_t wordlistSize, int64_t length);

@@ -25,13 +25,23 @@ int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode)
     {
 
         createPasswd(&wordlistContent);
+        printf("Number of passwords : %.lf \n", calculateSize(wordlistContent.size, wordlistConfig->length));
     }
     else if (mode == VARIABLE_LENGTH)
     {
+        int64_t saveSize = wordlistConfig->length;
+        double wordlistSize = 0;
+        for (int64_t i = 1; i <= saveSize; i++)
+        {
+            wordlistConfig->length = i;
+            createPasswd(&wordlistContent);
+            wordlistSize += calculateSize(wordlistContent.size, wordlistConfig->length);
+        }
+
+        printf("Number of passwords : %.lf \n", wordlistSize);
     }
 
     free(wordlistContent.content);
-    calculateSize(wordlistContent.size, wordlistConfig->length);
 
     return 0;
 }
@@ -199,10 +209,10 @@ void createPasswd(WDL_CHARS *wordlistContent)
 }
 
 /* Display the size of the wordlist */
-void calculateSize(int64_t wordlistSize, int64_t length){
+double calculateSize(int64_t wordlistSize, int64_t length)
+{
 
     double totalSize;
-    totalSize = pow((double) wordlistSize, (double) length);
-    printf("Number of passwords : %.lf \n", totalSize);
-
+    totalSize = pow((double)wordlistSize, (double)length);
+    return totalSize;
 }
