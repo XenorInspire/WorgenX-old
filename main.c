@@ -36,19 +36,10 @@ int main(int argc, char const *argv[])
 
         wordlistConfig.length = validLength();
         wordslistFile(&wordlistConfig);
-        if (generateWordlist(&wordlistConfig, FIXED_LENGTH) != 0)
+        if (generateWordlist(&wordlistConfig) != 0)
         {
-
             printf("Error \n");
         }
-
-        //printf("numbers : %d \n",wordlistConfig.numbers);
-        //printf("special char : %d \n",wordlistConfig.specialCharacters);
-        //printf("letters (lowercase) : %d \n", wordlistConfig.lowercaseLetters);
-        //printf("letters (uppercase) : %d \n", wordlistConfig.uppercaseLetters);
-        //printf("Variable Length : %d \n", wordlistConfig.variableLength);
-        //printf("length : %ld \n", wordlistConfig.length);
-        //printf("file name : %s \n", wordlistConfig.fileName);
 
         free(wordlistConfig.fileName);
 

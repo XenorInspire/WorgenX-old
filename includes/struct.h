@@ -11,10 +11,10 @@ typedef struct genConfig
     bool specialCharacters;
     bool uppercaseLetters;
     bool lowercaseLetters;
-    bool variableLength;
+    bool fixedSize;
     int64_t length;
     char *fileName;
-    FILE * log;
+    FILE *log;
 
 } GEN_CONFIG;
 

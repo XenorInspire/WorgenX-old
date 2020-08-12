@@ -16,18 +16,18 @@ const char digits[SIZE_DIGITS] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '
 const char specialCharacters[SIZE_SPE_CHAR] = {'~', '"', '\'', '{', '(', '[', '-', '|', '`', '_', '\\', '^', '@', ')', ']', '=', '+', '}', '$', '%', '*', '!', ':', '/', ';', '.', ',', '?', '<', '>'};
 
 /* Main function of wordlist generation */
-int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode)
+int8_t generateWordlist(GEN_CONFIG *wordlistConfig)
 {
 
     WDL_CHARS wordlistContent = createContent(wordlistConfig);
 
-    if (mode == FIXED_LENGTH)
+    if (wordlistConfig->fixedSize == true)
     {
 
         createPasswd(&wordlistContent);
         printf("Number of passwords : %.lf \n", calculateSize(wordlistContent.size, wordlistConfig->length));
     }
-    else if (mode == VARIABLE_LENGTH)
+    else if (wordlistConfig->fixedSize == false)
     {
         int64_t saveSize = wordlistConfig->length;
         double wordlistSize = 0;

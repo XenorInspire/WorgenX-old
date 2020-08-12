@@ -7,11 +7,8 @@
 #define SIZE_DIGITS 10
 #define SIZE_SPE_CHAR 30
 
-#define FIXED_LENGTH 0
-#define VARIABLE_LENGTH 1
-
 /* Main function of wordlist generation */
-int8_t generateWordlist(GEN_CONFIG *wordlistConfig, int8_t mode);
+int8_t generateWordlist(GEN_CONFIG *wordlistConfig);
 
 /* Function charged to create the wordlist content */
 WDL_CHARS createContent(GEN_CONFIG *wordlistConfig);

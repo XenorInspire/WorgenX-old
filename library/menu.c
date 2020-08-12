@@ -10,7 +10,7 @@
 #include "../includes/menu.h"
 #include "../includes/system.h"
 
-/* Function charged to force the user to specify a valid length */
+/* Function charged to force the user to specify a valid length/max */
 int64_t validLength()
 {
     int8_t lock = 0;
@@ -22,7 +22,7 @@ int64_t validLength()
     {
         length = malloc(MAX_LENGTH * sizeof(char));
 
-        printf("Specify a valid length \n");
+        printf("Specify a valid length or a valid max if it's a variable size\n");
         fgets(length, MAX_LENGTH, stdin);
 
         if (length[strlen(length) - 1] == '\n')
@@ -51,7 +51,8 @@ void displayTitle(int8_t max)
 }
 
 /* Function charged to allocate users' values to the wordlist config */
-bool allocateConfig(GEN_CONFIG * wordlistConfig){
+bool allocateConfig(GEN_CONFIG *wordlistConfig)
+{
 
     char choice;
     bool check = false;
@@ -61,12 +62,13 @@ bool allocateConfig(GEN_CONFIG * wordlistConfig){
     emptyBuffer();
     scanf("%c", &choice);
 
-    if (choice == 'y' || choice == 'Y'){
+    if (choice == 'y' || choice == 'Y')
+    {
 
         wordlistConfig->uppercaseLetters = true;
         check = true;
     }
-        
+
     else
         wordlistConfig->uppercaseLetters = false;
 
@@ -88,12 +90,13 @@ bool allocateConfig(GEN_CONFIG * wordlistConfig){
     emptyBuffer();
     scanf("%c", &choice);
 
-    if (choice == 'y' || choice == 'Y'){
+    if (choice == 'y' || choice == 'Y')
+    {
 
         wordlistConfig->numbers = true;
         check = true;
     }
-        
+
     else
         wordlistConfig->numbers = false;
 
@@ -101,15 +104,27 @@ bool allocateConfig(GEN_CONFIG * wordlistConfig){
     emptyBuffer();
     scanf("%c", &choice);
 
-    if (choice == 'y' || choice == 'Y'){
+    if (choice == 'y' || choice == 'Y')
+    {
 
         wordlistConfig->specialCharacters = true;
         check = true;
     }
-        
+
     else
         wordlistConfig->specialCharacters = false;
 
-    return check;
+    printf("Variable size ? (1 -> Max) y/n\n");
+    printf("Defaut : fixed size \n");
+    emptyBuffer();
+    scanf("%c", &choice);
 
+    if (choice == 'y' || choice == 'Y')
+
+        wordlistConfig->fixedSize = false;
+
+    else
+        wordlistConfig->fixedSize = true;
+
+    return check;
 }
