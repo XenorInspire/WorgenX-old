@@ -22,7 +22,7 @@ void wordslistFile(GEN_CONFIG *wordlistConfig)
 {
 
     wordlistConfig->fileName = malloc(SIZE_FILE_NAME * sizeof(char));
-    checkSimplePtr(wordlistConfig->fileName);
+    checkPtr(wordlistConfig->fileName);
 
     printf("File name : \n");
     fgets(wordlistConfig->fileName, SIZE_FILE_NAME, stdin);
@@ -51,30 +51,36 @@ char *verifyExtension(char *fileName)
     // If there are several .txt extension in the file name
     while ((ptr = strstr(ptr, ".txt")) != NULL)
     {
-
         counter++;
         if (counter > 1)
-        {
-
             strcpy(ptr, ptr + strlen(".txt"));
-        }
         else
-        {
-
             ptr++;
-        }
     }
 
     return fileName;
 }
 
-/* Check if a simple char pointer is NULL */
-void checkSimplePtr(char *ptr)
+/* Check if a char pointer is NULL */
+void checkPtr(char *ptr)
 {
 
     if (ptr == NULL)
     {
         printf("Error, not enough memory available, WorgenX will shutdown \n");
+        SLEEP(3000);
+        exit(0);
+    }
+}
+
+/* Check if a file pointer is NULL */
+void checkFile(FILE *log)
+{
+
+    if (log == NULL)
+    {
+        printf("Error, WorgenX is not able to write in the wordlist file\n");
+        printf("Check if you have enough memory on your hard drive, if the partition isn\'t in read-only mode or if the file is still exists \n");
         SLEEP(3000);
         exit(0);
     }

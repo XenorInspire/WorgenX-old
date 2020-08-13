@@ -36,10 +36,7 @@ int main(int argc, char const *argv[])
 
         wordlistConfig.length = validLength();
         wordslistFile(&wordlistConfig);
-        if (generateWordlist(&wordlistConfig) != 0)
-        {
-            printf("Error \n");
-        }
+        generateWordlist(&wordlistConfig);
 
         free(wordlistConfig.fileName);
 

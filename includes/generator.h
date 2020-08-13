@@ -8,7 +8,7 @@
 #define SIZE_SPE_CHAR 30
 
 /* Main function of wordlist generation */
-int8_t generateWordlist(GEN_CONFIG *wordlistConfig);
+void generateWordlist(GEN_CONFIG *wordlistConfig);
 
 /* Function charged to create the wordlist content */
 WDL_CHARS createContent(GEN_CONFIG *wordlistConfig);

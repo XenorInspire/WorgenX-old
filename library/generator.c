@@ -16,7 +16,7 @@ const char digits[SIZE_DIGITS] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '
 const char specialCharacters[SIZE_SPE_CHAR] = {'~', '"', '\'', '{', '(', '[', '-', '|', '`', '_', '\\', '^', '@', ')', ']', '=', '+', '}', '$', '%', '*', '!', ':', '/', ';', '.', ',', '?', '<', '>'};
 
 /* Main function of wordlist generation */
-int8_t generateWordlist(GEN_CONFIG *wordlistConfig)
+void generateWordlist(GEN_CONFIG *wordlistConfig)
 {
 
     WDL_CHARS wordlistContent = createContent(wordlistConfig);
@@ -43,7 +43,6 @@ int8_t generateWordlist(GEN_CONFIG *wordlistConfig)
 
     free(wordlistContent.content);
 
-    return 0;
 }
 
 /* Function charged to create the wordlist content */
@@ -123,7 +122,7 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
     {
 
         content = malloc(definedArraySize * sizeof(char));
-        checkSimplePtr(content);
+        checkPtr(content);
 
         for (int64_t i = 0; i < definedArraySize; i++)
             content[i] = definedArray[i];
@@ -133,7 +132,7 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 
         int64_t i;
         char *newContent = malloc((contentSize + definedArraySize) * sizeof(char));
-        checkSimplePtr(newContent);
+        checkPtr(newContent);
 
         for (i = 0; i < contentSize; i++)
             newContent[i] = content[i];
@@ -162,7 +161,8 @@ void createPasswd(WDL_CHARS *wordlistContent)
 
     wordlistContent->wordlistConfig->log = fopen(wordlistContent->wordlistConfig->fileName, "ab");
     passwd = malloc((wordlistContent->wordlistConfig->length + 1) * sizeof(char));
-    checkSimplePtr(passwd);
+    checkPtr(passwd);
+    checkFile(wordlistContent->wordlistConfig->log);
 
     int16_t index[wordlistContent->wordlistConfig->length];
 

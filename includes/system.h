@@ -19,8 +19,11 @@ void wordslistFile(GEN_CONFIG *wordlistConfig);
 /* Check if the file name has only one txt extension (or not) */
 char *verifyExtension(char *fileName);
 
-/* Check if a simple char pointer is NULL */
-void checkSimplePtr(char *ptr);
+/* Check if a char pointer is NULL */
+void checkPtr(char *ptr);
+
+/* Check if a file pointer is NULL */
+void checkFile(FILE *log);
 
 /* This function is used to save and display the password in the wordlist file */
 void savePasswd(FILE *log, char *passwd);
