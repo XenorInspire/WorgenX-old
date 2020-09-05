@@ -42,7 +42,6 @@ void generateWordlist(GEN_CONFIG *wordlistConfig)
     }
 
     free(wordlistContent.content);
-
 }
 
 /* Function charged to create the wordlist content */
@@ -208,7 +207,144 @@ void createPasswd(WDL_CHARS *wordlistContent)
     fclose(wordlistContent->wordlistConfig->log);
 }
 
-/* Display the size of the wordlist */
+/* Generate a random password */
+char *randPasswd(PASSWD_CONFIG *passwordConfig)
+{
+
+    char *content = malloc((passwordConfig->length + 1) * sizeof(char));
+    checkPtr(content);
+
+    int8_t type;
+    PASSWD_CHARS passwordChars = createPasswdContent(passwordConfig);
+    content[passwordConfig->length] = '\0';
+
+    for (int64_t i = 0; i < passwordConfig->length; i++)
+    {
+
+        type = rand() % passwordChars.sizeConstArrays;
+        content[i] = randChar(passwordChars.constArrays[type]);
+    }
+
+    free(passwordChars.constArrays);
+    return content;
+}
+
+/* Create the possible content for the password */
+PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig)
+{
+
+    PASSWD_CHARS passwordChars;
+    int32_t temp = 0;
+    passwordChars.passwordConfig = passwordConfig;
+    passwordChars.sizeConstArrays = 0;
+
+    if (passwordConfig->lowercaseLetters == true)
+    {
+
+        temp = 1;
+        passwordChars.sizeConstArrays++;
+    }
+
+    if (passwordConfig->uppercaseLetters == true)
+    {
+
+        if (passwordChars.sizeConstArrays > 0)
+        {
+            int32_t valUpper = (int)pow(10, passwordChars.sizeConstArrays);
+            passwordChars.sizeConstArrays++;
+            temp += 2 * valUpper;
+        }
+        else
+        {
+
+            temp = 2;
+            passwordChars.sizeConstArrays++;
+        }
+    }
+
+    if (passwordConfig->numbers == true)
+    {
+
+        if (passwordChars.sizeConstArrays > 0)
+        {
+
+            int32_t valNumbers = (int)pow(10, passwordChars.sizeConstArrays);
+            passwordChars.sizeConstArrays++;
+            temp += 3 * valNumbers;
+        }
+        else
+        {
+
+            temp = 3;
+            passwordChars.sizeConstArrays++;
+        }
+    }
+
+    if (passwordConfig->specialCharacters == true)
+    {
+
+        if (passwordChars.sizeConstArrays > 0)
+        {
+
+            int32_t valSpecialChars = (int)pow(10, passwordChars.sizeConstArrays);
+            passwordChars.sizeConstArrays++;
+            temp += 4 * valSpecialChars;
+        }
+        else
+        {
+
+            temp = 4;
+            passwordChars.sizeConstArrays++;
+        }
+    }
+
+    passwordChars.constArrays = convertNbIntoArray(temp, &passwordChars);
+    return passwordChars;
+}
+
+/* Return a random character from one of the originals arrays */
+char randChar(int8_t type)
+{
+
+    switch (type)
+    {
+
+    case 1:
+        return lowChar[rand() % SIZE_LOWER_CHAR];
+        break;
+
+    case 2:
+        return upperChar[rand() % SIZE_UPPER_CHAR];
+        break;
+
+    case 3:
+        return digits[rand() % SIZE_DIGITS];
+        break;
+
+    case 4:
+        return specialCharacters[rand() % SIZE_SPE_CHAR];
+        break;
+    }
+}
+
+/* Convert a number in array which contains all its digits */
+int8_t *convertNbIntoArray(int32_t number, PASSWD_CHARS *passwordChars)
+{
+
+    int8_t *indexTable = malloc(passwordChars->sizeConstArrays);
+    checkPtr(indexTable);
+
+    for (int8_t k = 0; k < passwordChars->sizeConstArrays; k++)
+    {
+
+        indexTable[k] = number % 10;
+        number = number / 10;
+    }
+
+    return indexTable;
+}
+
+/* Return the size of the wordlist */
 double calculateSize(int64_t wordlistSize, int64_t length)
 {
 

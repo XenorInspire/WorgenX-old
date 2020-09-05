@@ -27,3 +27,26 @@ typedef struct wordlistChars
     GEN_CONFIG *wordlistConfig;
 
 } WDL_CHARS;
+
+/* Password configuration */
+typedef struct passwdConfig
+{
+
+    bool numbers;
+    bool specialCharacters;
+    bool uppercaseLetters;
+    bool lowercaseLetters;
+    int64_t length;
+    char *content;
+
+} PASSWD_CONFIG;
+
+/* Password content */
+typedef struct passwdChars
+{
+
+    int8_t *constArrays;
+    int8_t sizeConstArrays;
+    PASSWD_CONFIG *passwordConfig;
+
+} PASSWD_CHARS;

@@ -22,13 +22,13 @@ int64_t validLength()
     {
         length = malloc(MAX_LENGTH * sizeof(char));
 
-        printf("Specify a valid length or a valid max if it's a variable size\n");
+        printf("Enter the value :\n");
         fgets(length, MAX_LENGTH, stdin);
 
         if (length[strlen(length) - 1] == '\n')
             length[strlen(length) - 1] = '\0';
 
-        if (atoi(length) != 0)
+        if (atoi(length) >= 0)
         {
             size = atoi(length);
             lock = 1;
@@ -48,6 +48,73 @@ void displayTitle(int8_t max)
         printf("#");
 
     printf("\n");
+}
+
+/* Function charged to allocate users' values to the password config */
+bool allocatePasswdConfig(PASSWD_CONFIG *passwordConfig)
+{
+
+    char choice;
+    bool check = false;
+
+    printf("\nWish type of character you want to use ? \n");
+    printf("Letters (uppercase) ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+
+        passwordConfig->uppercaseLetters = true;
+        check = true;
+    }
+
+    else
+        passwordConfig->uppercaseLetters = false;
+
+    printf("Letters (lowercase) ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+
+        passwordConfig->lowercaseLetters = true;
+        check = true;
+    }
+
+    else
+        passwordConfig->lowercaseLetters = false;
+
+    printf("Numbers ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+
+        passwordConfig->numbers = true;
+        check = true;
+    }
+
+    else
+        passwordConfig->numbers = false;
+
+    printf("Special characters ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+
+        passwordConfig->specialCharacters = true;
+        check = true;
+    }
+
+    else
+        passwordConfig->specialCharacters = false;
+
+    return check;
 }
 
 /* Function charged to allocate users' values to the wordlist config */

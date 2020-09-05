@@ -7,24 +7,17 @@ Made by Xen0rInspire */
 #include <stdbool.h>
 #include <string.h>
 
+#include "includes/main.h"
 #include "includes/struct.h"
 #include "includes/generator.h"
 #include "includes/menu.h"
 #include "includes/system.h"
 
-int main(int argc, char const *argv[])
+/* This function is charged to load wordlist generation functionality */
+void wordlistFeature()
 {
-
+    char choice = '1';
     GEN_CONFIG wordlistConfig;
-    char choice;
-
-    displayTitle(30);
-    printf("\n WorgenX by XenorInspire \n");
-    displayTitle(30);
-
-    printf("\n1 : Create a wordlist \n");
-    printf("0 : Exit WorgenX\n");
-    scanf("%c", &choice);
 
     while (choice == '1')
     {
@@ -34,6 +27,7 @@ int main(int argc, char const *argv[])
             printf("Error, you forgot to specify the character's type you want to use \n");
         }
 
+        printf("Specify a valid length or a valid max if it's a variable size\n");
         wordlistConfig.length = validLength();
         wordslistFile(&wordlistConfig);
         generateWordlist(&wordlistConfig);
@@ -43,6 +37,64 @@ int main(int argc, char const *argv[])
         printf("\n Do you want to create another wordlist ?\n");
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
+    }
+}
+
+/* This function is charged to load the password generation functionality */
+void passwordFeature()
+{
+
+    char choice = '1';
+    PASSWD_CONFIG passwordConfig;
+
+    while (choice == '1')
+    {
+
+        while (allocatePasswdConfig(&passwordConfig) == false)
+        {
+
+            printf("Error, you forgot to specify the character's type you want to use \n");
+        }
+
+        printf("Specify a valid length\n");
+        passwordConfig.length = validLength();
+
+        //for(int m = 0; m < 100; m++){
+
+            passwordConfig.content = randPasswd(&passwordConfig);
+            printf("Your password : %s\n", passwordConfig.content);
+            free(passwordConfig.content);
+        //}
+        
+        printf("\n Do you want to generate another password ?\n");
+        printf("1 : Yes\n0 : No \n");
+        scanf("%c", &choice);
+    }
+}
+
+int main(int argc, char const *argv[])
+{
+
+    char choice;
+
+    displayTitle(30);
+    printf("\n WorgenX by XenorInspire \n");
+    displayTitle(30);
+
+    printf("\n1 : Create a wordlist \n");
+    printf("2 : Generate a random password \n");
+    printf("0 : Exit WorgenX\n");
+    scanf("%c", &choice);
+
+    switch (choice)
+    {
+    case '1':
+        wordlistFeature();
+        break;
+
+    case '2':
+        passwordFeature();
+        break;
     }
 
     return 0;

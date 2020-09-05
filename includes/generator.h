@@ -6,6 +6,7 @@
 #define SIZE_LOWER_CHAR 26
 #define SIZE_DIGITS 10
 #define SIZE_SPE_CHAR 30
+#define NB_CHARS_TYPE 4
 
 /* Main function of wordlist generation */
 void generateWordlist(GEN_CONFIG *wordlistConfig);
@@ -31,5 +32,17 @@ char *allocateChar(char *content, int64_t contentSize, const char *definedArray,
 /* Function charged to generate the password from the dictionary */
 void createPasswd(WDL_CHARS *wordlistContent);
 
-/* Display the size of the wordlist */
+/* Return the size of the wordlist */
 double calculateSize(int64_t wordlistSize, int64_t length);
+
+/* Generate a random password */
+char *randPasswd(PASSWD_CONFIG *passwordConfig);
+
+/* Create the possible content for the password */
+PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig);
+
+/* Return a random character from one of the originals arrays */
+char randChar(int8_t type);
+
+/* Convert a number in array which contains all its digits */
+int8_t *convertNbIntoArray(int32_t number, PASSWD_CHARS *passwordChars);

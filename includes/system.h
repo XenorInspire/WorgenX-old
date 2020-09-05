@@ -20,7 +20,7 @@ void wordslistFile(GEN_CONFIG *wordlistConfig);
 char *verifyExtension(char *fileName);
 
 /* Check if a char pointer is NULL */
-void checkPtr(char *ptr);
+void checkPtr(void *ptr);
 
 /* Check if a file pointer is NULL */
 void checkFile(FILE *log);

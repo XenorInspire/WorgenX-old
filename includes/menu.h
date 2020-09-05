@@ -13,3 +13,6 @@ int64_t validLength();
 
 /* Function charged to allocate users' values to the wordlist config */
 bool allocateConfig(GEN_CONFIG *wordlistConfig);
+
+/* Function charged to allocate users' values to the password config */
+bool allocatePasswdConfig(PASSWD_CONFIG *passwordConfig);

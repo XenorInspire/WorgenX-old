@@ -62,7 +62,7 @@ char *verifyExtension(char *fileName)
 }
 
 /* Check if a char pointer is NULL */
-void checkPtr(char *ptr)
+void checkPtr(void *ptr)
 {
 
     if (ptr == NULL)
