@@ -250,7 +250,7 @@ PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig)
 
         if (passwordChars.sizeConstArrays > 0)
         {
-            int32_t valUpper = (int)pow(10, passwordChars.sizeConstArrays);
+            int32_t valUpper = (int)floor(pow(10, passwordChars.sizeConstArrays));
             passwordChars.sizeConstArrays++;
             temp += 2 * valUpper;
         }
@@ -268,7 +268,7 @@ PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig)
         if (passwordChars.sizeConstArrays > 0)
         {
 
-            int32_t valNumbers = (int)pow(10, passwordChars.sizeConstArrays);
+            int32_t valNumbers = (int)floor(pow(10, passwordChars.sizeConstArrays));
             passwordChars.sizeConstArrays++;
             temp += 3 * valNumbers;
         }
@@ -286,7 +286,7 @@ PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig)
         if (passwordChars.sizeConstArrays > 0)
         {
 
-            int32_t valSpecialChars = (int)pow(10, passwordChars.sizeConstArrays);
+            int32_t valSpecialChars = (int)floor(pow(10, passwordChars.sizeConstArrays));
             passwordChars.sizeConstArrays++;
             temp += 4 * valSpecialChars;
         }
@@ -305,26 +305,28 @@ PASSWD_CHARS createPasswdContent(PASSWD_CONFIG *passwordConfig)
 /* Return a random character from one of the originals arrays */
 char randChar(int8_t type)
 {
-
+    char character;
     switch (type)
     {
 
     case 1:
-        return lowChar[rand() % SIZE_LOWER_CHAR];
+        character = lowChar[rand() % SIZE_LOWER_CHAR];
         break;
 
     case 2:
-        return upperChar[rand() % SIZE_UPPER_CHAR];
+        character = upperChar[rand() % SIZE_UPPER_CHAR];
         break;
 
     case 3:
-        return digits[rand() % SIZE_DIGITS];
+        character = digits[rand() % SIZE_DIGITS];
         break;
 
     case 4:
-        return specialCharacters[rand() % SIZE_SPE_CHAR];
+        character = specialCharacters[rand() % SIZE_SPE_CHAR];
         break;
     }
+
+    return character;
 }
 
 /* Convert a number in array which contains all its digits */
