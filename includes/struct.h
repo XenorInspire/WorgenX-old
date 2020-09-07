@@ -37,6 +37,7 @@ typedef struct passwdConfig
     bool uppercaseLetters;
     bool lowercaseLetters;
     int64_t length;
+    int64_t nbPassword;
     char *content;
 
 } PASSWD_CONFIG;

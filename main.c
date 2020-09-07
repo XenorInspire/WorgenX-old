@@ -28,7 +28,8 @@ void wordlistFeature()
         }
 
         printf("Specify a valid length or a valid max if it's a variable size\n");
-        wordlistConfig.length = validLength();
+        emptyBuffer();
+        wordlistConfig.length = validNumericValue();
         wordslistFile(&wordlistConfig);
         generateWordlist(&wordlistConfig);
 
@@ -57,15 +58,19 @@ void passwordFeature()
         }
 
         printf("Specify a valid length\n");
-        passwordConfig.length = validLength();
+        emptyBuffer();
+        passwordConfig.length = validNumericValue();
+        printf("How many passwords do you want to generate ?\n");
+        passwordConfig.nbPassword = validNumericValue();
 
-        //for(int m = 0; m < 100; m++){
+        for (int64_t m = 0; m < passwordConfig.nbPassword; m++)
+        {
 
             passwordConfig.content = randPasswd(&passwordConfig);
             printf("Your password : %s\n", passwordConfig.content);
             free(passwordConfig.content);
-        //}
-        
+        }
+
         printf("\n Do you want to generate another password ?\n");
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
@@ -75,26 +80,29 @@ void passwordFeature()
 int main(int argc, char const *argv[])
 {
 
-    char choice;
-
-    displayTitle(30);
-    printf("\n WorgenX by XenorInspire \n");
-    displayTitle(30);
-
-    printf("\n1 : Create a wordlist \n");
-    printf("2 : Generate a random password \n");
-    printf("0 : Exit WorgenX\n");
-    scanf("%c", &choice);
-
-    switch (choice)
+    char choice = 1;
+    while (choice != '0')
     {
-    case '1':
-        wordlistFeature();
-        break;
 
-    case '2':
-        passwordFeature();
-        break;
+        displayTitle(30);
+        printf("\n WorgenX by XenorInspire \n");
+        displayTitle(30);
+
+        printf("\n1 : Create a wordlist \n");
+        printf("2 : Generate a random password \n");
+        printf("0 : Exit WorgenX\n");
+        scanf("%c", &choice);
+
+        switch (choice)
+        {
+        case '1':
+            wordlistFeature();
+            break;
+
+        case '2':
+            passwordFeature();
+            break;
+        }
     }
 
     return 0;

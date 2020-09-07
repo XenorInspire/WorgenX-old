@@ -10,13 +10,12 @@
 #include "../includes/menu.h"
 #include "../includes/system.h"
 
-/* Function charged to force the user to specify a valid length/max */
-int64_t validLength()
+/* Function charged to force the user to specify a valid numeric value */
+int64_t validNumericValue()
 {
     int8_t lock = 0;
     int64_t size;
     char *length;
-    emptyBuffer();
 
     while (lock == 0)
     {

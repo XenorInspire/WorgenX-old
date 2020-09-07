@@ -80,7 +80,7 @@ void checkFile(FILE *log)
     if (log == NULL)
     {
         printf("Error, WorgenX is not able to write in the wordlist file\n");
-        printf("Check if you have enough memory on your hard drive, if the partition isn\'t in read-only mode or if the file is still exists \n");
+        printf("Check if you have enough memory on your hard drive, if the partition isn\'t in read-only mode or if the file still exists \n");
         SLEEP(3000);
         exit(0);
     }
