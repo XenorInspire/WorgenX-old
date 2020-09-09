@@ -5,3 +5,6 @@ void wordlistFeature();
 
 /* This function is charged to load the password generation functionality */
 void passwordFeature();
+
+/* This function is charged to load the benchmark functionality */
+void benchFeature();

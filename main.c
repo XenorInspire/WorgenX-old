@@ -77,6 +77,21 @@ void passwordFeature()
     }
 }
 
+/* This function is charged to load the benchmark functionality */
+void benchFeature()
+{
+
+    char choice = '1';
+    while (choice == '1')
+    {
+        printf("The benchmark is starting... \n");
+
+        printf("\n Do you want to make another benchmark ?\n");
+        printf("1 : Yes\n0 : No \n");
+        scanf("%c", &choice);
+    }
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -90,6 +105,7 @@ int main(int argc, char const *argv[])
 
         printf("\n1 : Create a wordlist \n");
         printf("2 : Generate a random password \n");
+        printf("3 : Benchmark \n");
         printf("0 : Exit WorgenX\n");
         scanf("%c", &choice);
 
@@ -102,7 +118,13 @@ int main(int argc, char const *argv[])
         case '2':
             passwordFeature();
             break;
+
+        case '3':
+            benchFeature();
+            break;
         }
+
+        emptyBuffer();
     }
 
     return 0;
