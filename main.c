@@ -80,11 +80,15 @@ void passwordFeature()
 /* This function is charged to load the benchmark functionality */
 void benchFeature()
 {
-
+    PASSWD_CONFIG benchPasswdConfig;
+    int64_t nbPasswd;
     char choice = '1';
     while (choice == '1')
     {
-        printf("The benchmark is starting... \n");
+        printf("The benchmark is loading... Wait a minute.. \n");
+        createBenchPasswd(&benchPasswdConfig);
+        nbPasswd = passwordBenchmark(&benchPasswdConfig);
+        printf("Number of passwords generated in a minute : %d \n", nbPasswd);
 
         printf("\n Do you want to make another benchmark ?\n");
         printf("1 : Yes\n0 : No \n");

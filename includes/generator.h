@@ -46,3 +46,6 @@ char randChar(int8_t type);
 
 /* Convert a number in array which contains all its digits */
 int8_t *convertNbIntoArray(int32_t number, PASSWD_CHARS *passwordChars);
+
+/* Create the password configuration for the benchmarl */
+void createBenchPasswd(PASSWD_CONFIG *benchPasswdConfig);

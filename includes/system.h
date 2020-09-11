@@ -27,3 +27,6 @@ void checkFile(FILE *log);
 
 /* This function is used to save and display the password in the wordlist file */
 void savePasswd(FILE *log, char *passwd);
+
+/* This function is charged to calculate how many passwords the CPU is able to generate depending on the system time */
+int64_t passwordBenchmark(PASSWD_CONFIG *benchPasswdConfig);

@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <time.h>
 
 #include "../includes/struct.h"
 #include "../includes/system.h"
+#include "../includes/generator.h"
 
 /* Function charged to empty the buffer */
 void emptyBuffer()
@@ -92,4 +94,25 @@ void savePasswd(FILE *log, char *passwd)
 
     printf("%s \n", passwd);
     fprintf(log, "%s \n", passwd);
+}
+
+/* This function is charged to calculate how many passwords the CPU is able to generate depending on the system time */
+int64_t passwordBenchmark(PASSWD_CONFIG *benchPasswdConfig)
+{
+
+    int64_t nbPasswd = 0;
+    time_t start, end;
+
+    time(&start);
+    end = start + 60;
+
+    while (start < end)
+    {
+        time(&start);
+        benchPasswdConfig->content = randPasswd(benchPasswdConfig);
+        free(benchPasswdConfig->content);
+        nbPasswd++;
+    }
+
+    return nbPasswd;
 }

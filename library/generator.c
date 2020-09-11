@@ -10,6 +10,9 @@
 #include "../includes/generator.h"
 #include "../includes/system.h"
 
+/* This value concerns the benchmark feature */
+#define BENCH_PASSWD_LENGTH 10
+
 const char lowChar[SIZE_LOWER_CHAR] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 const char upperChar[SIZE_UPPER_CHAR] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 const char digits[SIZE_DIGITS] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -353,4 +356,14 @@ double calculateSize(int64_t wordlistSize, int64_t length)
     double totalSize;
     totalSize = pow((double)wordlistSize, (double)length);
     return totalSize;
+}
+
+/* Create the password configuration for the benchmarl */
+void createBenchPasswd(PASSWD_CONFIG * benchPasswdConfig){
+
+    benchPasswdConfig->numbers = true;
+    benchPasswdConfig->specialCharacters = true;
+    benchPasswdConfig->uppercaseLetters = true;
+    benchPasswdConfig->lowercaseLetters = true;
+    benchPasswdConfig->length = BENCH_PASSWD_LENGTH;
 }
