@@ -8,3 +8,6 @@ void passwordFeature();
 
 /* This function is charged to load the benchmark functionality */
 void benchFeature();
+
+/* This function is charged to load the password encryption */
+void encryptFeature();

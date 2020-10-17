@@ -13,6 +13,19 @@ Made by Xen0rInspire */
 #include "includes/menu.h"
 #include "includes/system.h"
 
+/* This function is charged to load the password encryption */
+void encryptFeature()
+{
+
+    char choice = '1';
+    while(choice == '1'){
+
+        printf("Please enter your password : \n");
+        char *plainText = userInput();
+    }
+
+}
+
 /* This function is charged to load wordlist generation functionality */
 void wordlistFeature()
 {
@@ -30,7 +43,7 @@ void wordlistFeature()
         printf("Specify a valid length or a valid max if it's a variable size\n");
         emptyBuffer();
         wordlistConfig.length = validNumericValue();
-        wordslistFile(&wordlistConfig);
+        wordlistConfig.fileName = userInput();
         generateWordlist(&wordlistConfig);
 
         free(wordlistConfig.fileName);
@@ -109,7 +122,8 @@ int main(int argc, char const *argv[])
 
         printf("\n1 : Create a wordlist \n");
         printf("2 : Generate a random password \n");
-        printf("3 : Benchmark \n");
+        printf("3 : Encrypt a password (sha256) \n");
+        printf("4 : Benchmark \n");
         printf("0 : Exit WorgenX\n");
         scanf("%c", &choice);
 
@@ -124,12 +138,17 @@ int main(int argc, char const *argv[])
             break;
 
         case '3':
+            encryptFeature();
+            break;
+
+        case '4':
             benchFeature();
             break;
         }
 
-        emptyBuffer();
-    }
 
-    return 0;
+    emptyBuffer();
+}
+
+return 0;
 }

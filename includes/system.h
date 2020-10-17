@@ -13,8 +13,8 @@
 /* Function charged to empty the buffer */
 void emptyBuffer();
 
-/* Function charged to allocate a name to the wordlist file */
-void wordslistFile(GEN_CONFIG *wordlistConfig);
+/* Function charged to get the user's input */
+char *userInput();
 
 /* Check if the file name has only one txt extension (or not) */
 char *verifyExtension(char *fileName);

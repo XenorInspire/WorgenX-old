@@ -19,20 +19,21 @@ void emptyBuffer()
         buffer = getchar();
 }
 
-/* Function charged to allocate a name to the wordlist file */
-void wordslistFile(GEN_CONFIG *wordlistConfig)
+/* Function charged to get the user's input */
+char *userInput()
 {
-
-    wordlistConfig->fileName = malloc(SIZE_FILE_NAME * sizeof(char));
-    checkPtr(wordlistConfig->fileName);
+    char *userText = malloc(SIZE_FILE_NAME * sizeof(char));
+    checkPtr(userText);
 
     printf("File name : \n");
-    fgets(wordlistConfig->fileName, SIZE_FILE_NAME, stdin);
+    fgets(userText, SIZE_FILE_NAME, stdin);
 
-    if (wordlistConfig->fileName[strlen(wordlistConfig->fileName) - 1] == '\n')
-        wordlistConfig->fileName[strlen(wordlistConfig->fileName) - 1] = '\0';
+    if (userText[strlen(userText) - 1] == '\n')
+        userText[strlen(userText) - 1] = '\0';
 
-    verifyExtension(wordlistConfig->fileName);
+    verifyExtension(userText);
+
+    return userText;
 }
 
 /* Check if the file name has only one txt extension (or not) */
