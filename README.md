@@ -5,10 +5,13 @@ A wordlist generator with several functionalities
 ## Requirements
 
 ### For Windows :
+
 Install MinGW (gcc compilator for windows) at http://www.mingw.org/
 
 ### For Linux :
+
 `apt install gcc` (debian distribution)
+
 `yum install gcc` (redhat distribution)
 
 
@@ -47,9 +50,11 @@ Execute the compilator :
 #### For Windows :
 
 Exit the compilator folder and execute WorgenX :
+
 `./WorgenX.exe`
 
 #### For Linux :
 
 Exit the compilator folder and execute WorgenX :
+
 `cd .. && ./WorgenX`
