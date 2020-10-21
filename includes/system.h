@@ -1,6 +1,8 @@
 /* Functions used to interact with the operating system */
 
 #define SIZE_FILE_NAME 256
+#define EXT 1
+#define NO_EXT 0
 
 #ifdef _WIN32
     #include <windows.h>
@@ -14,7 +16,7 @@
 void emptyBuffer();
 
 /* Function charged to get the user's input */
-char *userInput();
+char *userInput(int8_t mode);
 
 /* Check if the file name has only one txt extension (or not) */
 char *verifyExtension(char *fileName);

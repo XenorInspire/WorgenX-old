@@ -20,18 +20,18 @@ void emptyBuffer()
 }
 
 /* Function charged to get the user's input */
-char *userInput()
+char *userInput(int8_t mode)
 {
     char *userText = malloc(SIZE_FILE_NAME * sizeof(char));
     checkPtr(userText);
 
-    printf("File name : \n");
     fgets(userText, SIZE_FILE_NAME, stdin);
 
     if (userText[strlen(userText) - 1] == '\n')
         userText[strlen(userText) - 1] = '\0';
 
-    verifyExtension(userText);
+    if(mode == EXT)
+        verifyExtension(userText);
 
     return userText;
 }

@@ -25,7 +25,8 @@ int main(int argc, char const *argv[])
         system("gcc -c ../library/menu.c");
         system("gcc -c ../library/generator.c");
         system("gcc -c ../library/system.c");
-        system("gcc -o WorgenX main.o system.o menu.o generator.o -lm");
+        system("gcc -c ../library/encrypt.c");
+        system("gcc -o WorgenX main.o system.o menu.o encrypt.o generator.o -lm");
 
         system("rm *.o");
         system("mv WorgenX ../WorgenX");

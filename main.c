@@ -12,6 +12,7 @@ Made by Xen0rInspire */
 #include "includes/generator.h"
 #include "includes/menu.h"
 #include "includes/system.h"
+#include "includes/encrypt.h"
 
 /* This function is charged to load the password encryption */
 void encryptFeature()
@@ -21,8 +22,20 @@ void encryptFeature()
     while(choice == '1'){
 
         printf("Please enter your password : \n");
-        char *plainText = userInput();
-    }
+        emptyBuffer();
+        char *plainText = userInput(NO_EXT);
+        
+        char * finalHash = mainEncrypt(plainText);
+        printf("Hash (sha256) : \n%s\n",finalHash);
+
+        free(finalHash);
+        free(plainText);
+
+        printf("\n Do you want to hash another password ?\n");
+        printf("1 : Yes\n0 : No \n");
+        scanf("%c", &choice);
+
+        }
 
 }
 
@@ -43,7 +56,9 @@ void wordlistFeature()
         printf("Specify a valid length or a valid max if it's a variable size\n");
         emptyBuffer();
         wordlistConfig.length = validNumericValue();
-        wordlistConfig.fileName = userInput();
+
+        printf("File name : \n");
+        wordlistConfig.fileName = userInput(EXT);
         generateWordlist(&wordlistConfig);
 
         free(wordlistConfig.fileName);
@@ -122,7 +137,7 @@ int main(int argc, char const *argv[])
 
         printf("\n1 : Create a wordlist \n");
         printf("2 : Generate a random password \n");
-        printf("3 : Encrypt a password (sha256) \n");
+        printf("3 : Hash plaintext (sha256) \n");
         printf("4 : Benchmark \n");
         printf("0 : Exit WorgenX\n");
         scanf("%c", &choice);
