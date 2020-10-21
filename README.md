@@ -28,7 +28,7 @@ Move in the directory :
 #### For Windows :
 
 Go to the compilator folder and execute this command :
-`gcc WinxCompilator.c -o WinCompilator.exe`
+`gcc WinCompilator.c -o WinCompilator.exe`
 
 Execute the compilator :  
 `./WinCompilator.exe`
@@ -50,11 +50,9 @@ Execute the compilator :
 #### For Windows :
 
 Exit the compilator folder and execute WorgenX :
-
 `./WorgenX.exe`
 
 #### For Linux :
 
 Exit the compilator folder and execute WorgenX :
-
 `cd .. && ./WorgenX`
