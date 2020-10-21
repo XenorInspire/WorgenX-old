@@ -12,6 +12,7 @@ typedef struct genConfig
     bool uppercaseLetters;
     bool lowercaseLetters;
     bool fixedSize;
+    bool encrypt;
     int64_t length;
     char *fileName;
     FILE *log;

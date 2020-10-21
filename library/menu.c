@@ -192,5 +192,16 @@ bool allocateConfig(GEN_CONFIG *wordlistConfig)
     else
         wordlistConfig->fixedSize = true;
 
+    printf("Do you want to encrypt the wordlist ? y/n \n");
+    emptyBuffer();
+    scanf("%c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+
+        wordlistConfig->encrypt = true;
+
+    else
+        wordlistConfig->encrypt = false;
+
     return check;
 }

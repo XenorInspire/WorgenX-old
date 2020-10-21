@@ -9,6 +9,7 @@
 #include "../includes/struct.h"
 #include "../includes/generator.h"
 #include "../includes/system.h"
+#include "../includes/encrypt.h"
 
 /* This value concerns the benchmark feature */
 #define BENCH_PASSWD_LENGTH 10
@@ -203,7 +204,16 @@ void createPasswd(WDL_CHARS *wordlistContent)
         else
             count = 0;
 
-        savePasswd(wordlistContent->wordlistConfig->log, passwd);
+        if (wordlistContent->wordlistConfig->encrypt == true)
+        {
+
+            savePasswd(wordlistContent->wordlistConfig->log, mainEncrypt(passwd));
+        }
+        else
+        {
+
+            savePasswd(wordlistContent->wordlistConfig->log, passwd);
+        }
     }
 
     free(passwd);
@@ -359,7 +369,8 @@ double calculateSize(int64_t wordlistSize, int64_t length)
 }
 
 /* Create the password configuration for the benchmarl */
-void createBenchPasswd(PASSWD_CONFIG * benchPasswdConfig){
+void createBenchPasswd(PASSWD_CONFIG *benchPasswdConfig)
+{
 
     benchPasswdConfig->numbers = true;
     benchPasswdConfig->specialCharacters = true;
