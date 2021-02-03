@@ -35,14 +35,14 @@ Execute the compilator :
 
 #### For Linux :
 
-Go to the compilator folder and compile the compilator :
-`cd compilator/ && gcc UnixCompilator.c -o UnixCompilator`
+Go to the compilator folder :
+`cd compilator/`
 
 Make sure that the script has the right to be executed :  
-`chmod +x UnixCompilator`
+`chmod +x UnixCompilator.sh`
 
 Execute the compilator :  
-`./UnixCompilator`
+`./UnixCompilator.sh`
 
 
 ## Start WorgenX
