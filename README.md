@@ -27,11 +27,7 @@ Move in the directory :
 
 #### For Windows :
 
-Go to the compilator folder and execute this command :
-`gcc WinCompilator.c -o WinCompilator.exe`
-
-Execute the compilator :  
-`./WinCompilator.exe`
+Go to the compilator folder and start WinCompilator.cmd.
 
 #### For Linux :
 
@@ -49,8 +45,7 @@ Execute the compilator :
 
 #### For Windows :
 
-Exit the compilator folder and execute WorgenX :
-`./WorgenX.exe`
+Exit the compilator folder and start *WorgenX.exe*.
 
 #### For Linux :
 
