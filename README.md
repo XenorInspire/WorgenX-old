@@ -59,4 +59,4 @@ There is several parameters in the configuration file of WorgenX :
 
 Parameter | Description |
 --- | --- |
-MODE | There are 3 performance levels for WorgenX : 1 (LOW), 2 (MEDIUM) and 3 (HIGH). More the value is high, more WorgenX use CPU performances.
+MODE | There are 3 performance levels for WorgenX : 1 (LOW), 2 (MEDIUM) and 3 (HIGH). <br>More the value is high, more WorgenX use CPU performances.
