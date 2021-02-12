@@ -23,7 +23,7 @@ In a directory of your choice copy the repo :
 Move in the directory :  
 `cd KVM-Deploy-Tool/`
 
-### Compile and execute the compilator :
+### Compile WorgenX :
 
 #### For Windows :
 
