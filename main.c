@@ -15,13 +15,38 @@ Made by Xen0rInspire */
 #include "includes/encrypt.h"
 #include "includes/init.h"
 
-/* This function is charged to checked the configuration file when WorgenX start */
+/* This function is charged to check the configuration file when WorgenX start */
 void checkConfigFile()
 {
 
     CONFIG configWorgenX;
-    while(init(&configWorgenX) != 0) generateConfigFile();
-    printf("[%hd]",configWorgenX.mode);
+    int8_t value;
+    char choice = '1';
+    while ((value = init(&configWorgenX)) != 0)
+    {
+
+        switch (value)
+        {
+        case 1:
+            printf("WorgenX can't find any configuration file \n");
+            break;
+
+        case 2:
+            printf("Incorrect performance value, select 1 (LOW), 2 (MEDIUM) or 3 (HIGH)\n");
+            break;
+        }
+
+        printf("\n Do you want to generate a new configuration file ?\n");
+
+        if (value != 1)
+            printf("If not, WorgenX can't start untill you don't correct the value\n");
+
+        printf("1 : Yes\n0 : No \n");
+        scanf("%c", &choice);
+
+        choice == '1' ? generateConfigFile() : exit(0);
+    }
+    emptyBuffer();
 }
 
 /* This function is charged to load the password encryption */

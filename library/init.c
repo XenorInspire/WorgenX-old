@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "../includes/struct.h"
 #include "../includes/init.h"
@@ -65,6 +66,16 @@ int16_t findIntValue(char *lineConfig)
     return value;
 }
 
+/* Check all the values of the configuration file */
+int8_t verifyValues(CONFIG *configWorgenX)
+{
+
+    if (!(configWorgenX->mode <= HIGH && configWorgenX->mode >= LOW))
+        return 2;
+
+    return 0;
+}
+
 /* Read WorgenX configuration file */
 int8_t init(CONFIG *configWorgenX)
 {
@@ -87,5 +98,5 @@ int8_t init(CONFIG *configWorgenX)
 
     free(buffer);
     fclose(configFile);
-    return 0;
+    return verifyValues(configWorgenX);
 }

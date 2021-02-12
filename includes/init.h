@@ -9,3 +9,6 @@ int16_t findIntValue(char *lineConfig);
 
 /* Generate a new config.ini if the file is deleted or corrupted */
 void generateConfigFile();
+
+/* Check all the values of the configuration file */
+int8_t verifyValues(CONFIG *configWorgenX);
