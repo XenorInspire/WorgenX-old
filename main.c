@@ -13,20 +13,32 @@ Made by Xen0rInspire */
 #include "includes/menu.h"
 #include "includes/system.h"
 #include "includes/encrypt.h"
+#include "includes/init.h"
+
+/* This function is charged to checked the configuration file when WorgenX start */
+void checkConfigFile()
+{
+
+    CONFIG configWorgenX;
+    init(&configWorgenX);
+    // if(init(&configWorgenX) != 0) generateConfigFile();
+    printf("[%hd]",configWorgenX.mode);
+}
 
 /* This function is charged to load the password encryption */
 void encryptFeature()
 {
 
     char choice = '1';
-    while(choice == '1'){
+    while (choice == '1')
+    {
 
         printf("Please enter your password : \n");
         emptyBuffer();
         char *plainText = userInput(NO_EXT);
-        
-        char * finalHash = mainEncrypt(plainText);
-        printf("Hash (sha256) : \n%s\n",finalHash);
+
+        char *finalHash = mainEncrypt(plainText);
+        printf("Hash (sha256) : \n%s\n", finalHash);
 
         free(finalHash);
         free(plainText);
@@ -34,9 +46,7 @@ void encryptFeature()
         printf("\n Do you want to hash another password ?\n");
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
-
-        }
-
+    }
 }
 
 /* This function is charged to load wordlist generation functionality */
@@ -128,6 +138,7 @@ int main(int argc, char const *argv[])
 {
 
     char choice = 1;
+    checkConfigFile();
     while (choice != '0')
     {
 
@@ -161,9 +172,8 @@ int main(int argc, char const *argv[])
             break;
         }
 
+        emptyBuffer();
+    }
 
-    emptyBuffer();
-}
-
-return 0;
+    return 0;
 }

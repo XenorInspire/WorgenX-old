@@ -52,3 +52,11 @@ typedef struct passwdChars
     PASSWD_CONFIG *passwordConfig;
 
 } PASSWD_CHARS;
+
+/* Configuration file content */
+typedef struct config
+{
+
+    int16_t mode;
+
+} CONFIG;
