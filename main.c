@@ -20,8 +20,7 @@ void checkConfigFile()
 {
 
     CONFIG configWorgenX;
-    init(&configWorgenX);
-    // if(init(&configWorgenX) != 0) generateConfigFile();
+    while(init(&configWorgenX) != 0) generateConfigFile();
     printf("[%hd]",configWorgenX.mode);
 }
 
@@ -143,7 +142,7 @@ int main(int argc, char const *argv[])
     {
 
         displayTitle(30);
-        printf("\n WorgenX by XenorInspire \n");
+        printf("\n   WorgenX by Xen0rInspire \n");
         displayTitle(30);
 
         printf("\n1 : Create a wordlist \n");

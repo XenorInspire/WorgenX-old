@@ -5,11 +5,11 @@
 #define NO_EXT 0
 
 #ifdef _WIN32
-    #include <windows.h>
-    #define SLEEP(x) Sleep(x)
+#include <windows.h>
+#define SLEEP(x) Sleep(x)
 #else
-    #include <unistd.h>
-    #define SLEEP(x) sleep(x * 0.001)
+#include <unistd.h>
+#define SLEEP(x) sleep(x * 0.001)
 #endif
 
 /* Function charged to empty the buffer */
@@ -23,6 +23,9 @@ char *verifyExtension(char *fileName);
 
 /* Check if a char pointer is NULL */
 void checkPtr(void *ptr);
+
+/* Check if a char * pointer is NULL */
+void checkPtrPtr(char **ptr);
 
 /* Check if a file pointer is NULL */
 void checkFile(FILE *log);

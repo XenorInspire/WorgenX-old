@@ -76,6 +76,18 @@ void checkPtr(void *ptr)
     }
 }
 
+/* Check if a char * pointer is NULL */
+void checkPtrPtr(char **ptr)
+{
+
+    if (ptr == NULL)
+    {
+        printf("Error, not enough memory available, WorgenX will shutdown \n");
+        SLEEP(3000);
+        exit(0);
+    }
+}
+
 /* Check if a file pointer is NULL */
 void checkFile(FILE *log)
 {

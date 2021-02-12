@@ -9,6 +9,48 @@
 #include "../includes/system.h"
 
 #define SIZE_LINE 100
+#define CONFIG_PATH "config.ini"
+#define NB_PARAM 1
+#define SIZE_CONFIG_LINES 30
+
+/* config.ini values */
+
+#define LOW 1
+#define MEDIUM 2
+#define HIGH 3
+
+/* Generate a new config.ini if the file is deleted or corrupted */
+void generateConfigFile()
+{
+
+    FILE *configFile;
+    configFile = fopen(CONFIG_PATH, "wb");
+    char **content = malloc(sizeof(char *) * NB_PARAM);
+    checkPtrPtr(content);
+    char *temp = malloc(SIZE_CONFIG_LINES * sizeof(char));
+    checkPtr(temp);
+
+    for (int8_t i = 0; i < NB_PARAM; i++)
+    {
+
+        content[i] = malloc(sizeof(char) * SIZE_CONFIG_LINES);
+        checkPtr(content[i]);
+    }
+
+    sprintf(temp, "MODE = %hd", HIGH);
+    strcpy(content[0], temp);
+
+    for (int8_t j = 0; j < NB_PARAM; j++)
+    {
+
+        fprintf(configFile, "%s\n", content[j]);
+        free(content[j]);
+    }
+
+    free(content);
+    free(temp);
+    fclose(configFile);
+}
 
 /* Extract the value of the parameter from the configuration file */
 int16_t findIntValue(char *lineConfig)
@@ -28,7 +70,7 @@ int8_t init(CONFIG *configWorgenX)
 {
 
     FILE *configFile;
-    configFile = fopen("config.ini", "r");
+    configFile = fopen(CONFIG_PATH, "r");
     if (configFile == NULL)
         return 1;
 
@@ -43,6 +85,7 @@ int8_t init(CONFIG *configWorgenX)
             configWorgenX->mode = findIntValue(buffer);
     }
 
+    free(buffer);
     fclose(configFile);
     return 0;
 }
