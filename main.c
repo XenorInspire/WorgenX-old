@@ -7,8 +7,8 @@ Made by Xen0rInspire */
 #include <stdbool.h>
 #include <string.h>
 
-#include "includes/main.h"
 #include "includes/struct.h"
+#include "includes/main.h"
 #include "includes/generator.h"
 #include "includes/menu.h"
 #include "includes/system.h"
@@ -16,7 +16,7 @@ Made by Xen0rInspire */
 #include "includes/init.h"
 
 /* This function is charged to check the configuration file when WorgenX start */
-void checkConfigFile()
+CONFIG checkConfigFile()
 {
 
     CONFIG configWorgenX;
@@ -43,10 +43,10 @@ void checkConfigFile()
 
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
-
+        emptyBuffer();
         choice == '1' ? generateConfigFile() : exit(0);
     }
-    emptyBuffer();
+    return configWorgenX;
 }
 
 /* This function is charged to load the password encryption */
@@ -162,7 +162,7 @@ int main(int argc, char const *argv[])
 {
 
     char choice = 1;
-    checkConfigFile();
+    CONFIG configWorgenX = checkConfigFile();
     while (choice != '0')
     {
 
@@ -173,7 +173,7 @@ int main(int argc, char const *argv[])
         printf("\n1 : Create a wordlist \n");
         printf("2 : Generate a random password \n");
         printf("3 : Hash plaintext (sha256) \n");
-        printf("4 : Benchmark \n");
+        printf("4 : Benchmark CPU\n");
         printf("0 : Exit WorgenX\n");
         scanf("%c", &choice);
 

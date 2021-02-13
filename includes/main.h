@@ -13,4 +13,4 @@ void benchFeature();
 void encryptFeature();
 
 /* This function is charged to check the configuration file when WorgenX start */
-void checkConfigFile();
+CONFIG checkConfigFile();
