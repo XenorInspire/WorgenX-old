@@ -84,10 +84,10 @@ void wordlistFeature()
 
         while (allocateConfig(&wordlistConfig) == false)
         {
-            printf("Error, you forgot to specify the character's type you want to use \n");
+            printf("Please, select at least one type of character.\n");
         }
 
-        printf("Specify a valid length or a valid max if it's a variable size\n");
+        wordlistConfig.fixedSize == true ? printf("Specify a valid length \n") : printf("Specify a valid max length\n");
         emptyBuffer();
         wordlistConfig.length = validNumericValue();
 
@@ -116,7 +116,7 @@ void passwordFeature()
         while (allocatePasswdConfig(&passwordConfig) == false)
         {
 
-            printf("Error, you forgot to specify the character's type you want to use \n");
+            printf("Please, select at least one type of character.\n");
         }
 
         printf("Specify a valid length\n");

@@ -5,35 +5,35 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 #include "../includes/struct.h"
 #include "../includes/menu.h"
 #include "../includes/system.h"
 
+#define SIZE_BUFFER 256
+
 /* Function charged to force the user to specify a valid numeric value */
 int64_t validNumericValue()
 {
-    int8_t lock = 0;
     int64_t size;
-    char *length;
-
-    while (lock == 0)
+    char *buffer;
+    bool lock = true;
+    
+    while (lock == true)
     {
-        length = malloc(MAX_LENGTH * sizeof(char));
+        printf("Enter a value \n");
+        buffer = malloc(sizeof(char) * SIZE_BUFFER);
+        fgets(buffer, SIZE_BUFFER, stdin);
 
-        printf("Enter the value :\n");
-        fgets(length, MAX_LENGTH, stdin);
+        if (buffer[strlen(buffer) - 1] == '\n')
+            buffer[strlen(buffer) - 1] = '\0';
 
-        if (length[strlen(length) - 1] == '\n')
-            length[strlen(length) - 1] = '\0';
+        size = atoi(buffer);
+        if (size > 0)
+            lock = false;
 
-        if (atoi(length) >= 0)
-        {
-            size = atoi(length);
-            lock = 1;
-        }
-
-        free(length);
+        free(buffer);
     }
 
     return size;
@@ -56,7 +56,7 @@ bool allocatePasswdConfig(PASSWD_CONFIG *passwordConfig)
     char choice;
     bool check = false;
 
-    printf("\nWish type of character you want to use ? \n");
+    printf("\nChoose what your password is composed of : \n");
     printf("Letters (uppercase) ? y/n \n");
     emptyBuffer();
     scanf("%c", &choice);
@@ -123,7 +123,7 @@ bool allocateConfig(GEN_CONFIG *wordlistConfig)
     char choice;
     bool check = false;
 
-    printf("\nWish type of character you want to use ? \n");
+    printf("\nChoose what your wordlist is composed of : \n");
     printf("Letters (uppercase) ? y/n \n");
     emptyBuffer();
     scanf("%c", &choice);
