@@ -39,7 +39,7 @@ CONFIG checkConfigFile()
         printf("\n Do you want to generate a new configuration file ?\n");
 
         if (value != 1)
-            printf("If not, WorgenX can't start untill you don't correct the value\n");
+            printf("If not, WorgenX can't start until you don't correct the parameter(s)\n");
 
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
