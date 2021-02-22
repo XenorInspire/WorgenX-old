@@ -85,7 +85,6 @@ WDL_CHARS createContent(GEN_CONFIG *wordlistConfig)
     }
 
     wordlistContent.size = size;
-
     return wordlistContent;
 }
 
@@ -363,12 +362,10 @@ int8_t *convertNbIntoArray(int32_t number, PASSWD_CHARS *passwordChars)
 double calculateSize(int64_t wordlistSize, int64_t length)
 {
 
-    double totalSize;
-    totalSize = pow((double)wordlistSize, (double)length);
-    return totalSize;
+    return pow((double)wordlistSize, (double)length);
 }
 
-/* Create the password configuration for the benchmarl */
+/* Create the password configuration for the benchmark */
 void createBenchPasswd(PASSWD_CONFIG *benchPasswdConfig)
 {
 
