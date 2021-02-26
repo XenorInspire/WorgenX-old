@@ -7,6 +7,7 @@ A wordlist generator with several functionalities
 ### For Windows :
 
 Install MinGW (gcc compilator for windows) at https://sourceforge.net/projects/mingw/
+<br>
 Then, add GCC in your environmental variables.
 
 ### For Linux :
