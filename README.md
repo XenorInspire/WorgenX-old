@@ -16,6 +16,14 @@ Then, add GCC in your environmental variables.
 
 `yum install gcc` (redhat distribution)
 
+### For MacOS :
+
+Follow these tutorials : 
+
+1 : https://www.cyberciti.biz/faq/howto-apple-mac-os-x-install-gcc-compiler/
+
+2 : https://mkyong.com/mac/how-to-install-gcc-compiler-on-mac-os-x/
+
 
 ## Installation
 
@@ -31,7 +39,7 @@ Move in the directory :
 
 Go to the compilator folder and start WinCompilator.cmd.
 
-#### For Linux :
+#### For Linux/MacOS :
 
 Go to the compilator folder :
 `cd compilator/`
@@ -49,7 +57,7 @@ Execute the compilator :
 
 Exit the compilator folder and start *WorgenX.exe*.
 
-#### For Linux :
+#### For Linux/MacOS :
 
 Exit the compilator folder and execute WorgenX :
 `cd .. && ./WorgenX`
