@@ -2,7 +2,7 @@
 
 A wordlist generator with several functionalities
 
-## Requirements
+# Requirements
 
 ### For Windows :
 
@@ -25,7 +25,7 @@ Follow these tutorials :
 2 : https://mkyong.com/mac/how-to-install-gcc-compiler-on-mac-os-x/
 
 
-## Installation
+# Installation
 
 In a directory of your choice copy the repo :  
 `git clone https://github.com/XenorInspire/KVM-Deploy-Tool.git`  
@@ -51,7 +51,7 @@ Execute the compilator :
 `./UnixCompilator.sh`
 
 
-## Start WorgenX
+# Start WorgenX
 
 #### For Windows :
 
@@ -63,7 +63,7 @@ Exit the compilator folder and execute WorgenX :
 `cd .. && ./WorgenX`
 
 
-## Configuration
+# Configuration
 
 There is several parameters in the configuration file of WorgenX : 
 
