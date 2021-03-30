@@ -76,7 +76,6 @@ MODE | There are 3 performance levels for WorgenX : 1 (LOW), 2 (MEDIUM) and 3 (H
 # Mirrors
 
 - <a href="https://github.com/XenorInspire/WorgenX">Github</a>
-
 - <a href="https://gitlab.com/XenorInspire/WorgenX">Gitlab</a>
 
 # Licence
