@@ -37,7 +37,7 @@ Move in the directory :
 
 #### For Windows :
 
-Go to the compilator folder and start WinCompilator.cmd.
+Go to the compilator folder and start *WinCompilator.cmd*.
 
 #### For Linux/MacOS :
 
