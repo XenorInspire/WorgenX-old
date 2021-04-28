@@ -28,10 +28,11 @@ Follow these tutorials :
 # Installation
 
 In a directory of your choice copy the repo :  
-`git clone https://github.com/XenorInspire/KVM-Deploy-Tool.git`  
+`git clone https://github.com/XenorInspire/WorgenX.git`<br>  
+`git clone https://gitlab.com/XenorInspire/WorgenX`<br> 
 
 Move in the directory :  
-`cd KVM-Deploy-Tool/`
+`cd WorgenX/`
 
 ### Compile WorgenX :
 
