@@ -28,9 +28,9 @@ Follow these tutorials :
 # Installation
 
 In a directory of your choice copy the repo :  
-`git clone https://github.com/XenorInspire/WorgenX.git`<br>  
+`git clone https://github.com/XenorInspire/WorgenX.git` 
 `git clone https://gitlab.com/XenorInspire/WorgenX`<br> 
-
+<br> 
 Move in the directory :  
 `cd WorgenX/`
 
