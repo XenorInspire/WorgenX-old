@@ -29,7 +29,7 @@ Follow these tutorials :
 
 In a directory of your choice copy the repo :  
 `git clone https://github.com/XenorInspire/WorgenX.git`<br> 
-`git clone https://gitlab.com/XenorInspire/WorgenX`<br> 
+`git clone https://gitlab.com/XenorInspire/WorgenX.git`<br> 
 <br> 
 Move in the directory :  
 `cd WorgenX/`
