@@ -5,7 +5,7 @@
 #define SIZE_UPPER_CHAR 26
 #define SIZE_LOWER_CHAR 26
 #define SIZE_DIGITS 10
-#define SIZE_SPE_CHAR 30
+#define SIZE_SPE_CHAR 27
 #define NB_CHARS_TYPE 4
 
 /* Main function of wordlist generation */
