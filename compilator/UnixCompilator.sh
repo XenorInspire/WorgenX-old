@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "WorgenX is compilating.."
+echo "Compilation..."
 gcc -c ../main.c
 gcc -c ../library/menu.c
 gcc -c ../library/generator.c

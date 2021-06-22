@@ -1,10 +1,10 @@
 /* Functions used to start every functionalities of WorgenX */
 
 /* This function is charged to load wordlist generation functionality */
-void wordlistFeature();
+void wordlistFeature(CONFIG *configWorgenX);
 
 /* This function is charged to load the password generation functionality */
-void passwordFeature();
+void passwordFeature(CONFIG *configWorgenX);
 
 /* This function is charged to load the benchmark functionality */
 void benchFeature();

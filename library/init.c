@@ -8,16 +8,18 @@
 #include "../includes/init.h"
 #include "../includes/system.h"
 
-#define SIZE_LINE 100
-#define CONFIG_PATH "config.ini"
-#define NB_PARAM 1
-#define SIZE_CONFIG_LINES 30
-
 /* config.ini values */
 
 #define LOW 1
 #define MEDIUM 2
 #define HIGH 3
+
+/* default values */
+#define MAX_SIZE_DIR 256
+#define SIZE_LINE 100
+#define CONFIG_PATH "config.ini"
+#define NB_PARAM 2
+#define SIZE_CONFIG_LINES 30
 
 /* Generate a new config.ini if the file is deleted or corrupted */
 void generateConfigFile()
@@ -40,6 +42,8 @@ void generateConfigFile()
     sprintf(temp, "MODE = %hd", HIGH);
     strcpy(content[0], temp);
 
+    strcpy(content[0], "RAND_PASSWD_BACKUP = \"randomPasswds.txt\"");
+
     for (int8_t j = 0; j < NB_PARAM; j++)
     {
 
@@ -52,7 +56,7 @@ void generateConfigFile()
     fclose(configFile);
 }
 
-/* Extract the value of the parameter from the configuration file */
+/* Extract the integer value of the parameter from the configuration file */
 int16_t findIntValue(char *lineConfig)
 {
 
@@ -60,6 +64,20 @@ int16_t findIntValue(char *lineConfig)
     char *trash = malloc(sizeof(char) * 20);
     checkPtr(trash);
     sscanf(lineConfig, "%s = %hd", trash, &value);
+
+    free(trash);
+    return value;
+}
+
+/* Extract the string value of the parameter from the configuration file */
+char *findStringValue(char *lineConfig)
+{
+
+    char *value = malloc(sizeof(char *) * (MAX_SIZE_DIR + 1));
+    checkPtr(value);
+    char *trash = malloc(sizeof(char) * 20);
+    checkPtr(trash);
+    sscanf(lineConfig, "%s = %s", trash, value);
 
     free(trash);
     return value;
@@ -93,6 +111,9 @@ int8_t init(CONFIG *configWorgenX)
 
         if (strstr(buffer, "MODE") != NULL)
             configWorgenX->mode = findIntValue(buffer);
+
+        if (strstr(buffer, "RAND_PASSWD_BACKUP") != NULL)
+            configWorgenX->directory = findStringValue(buffer);
     }
 
     free(buffer);

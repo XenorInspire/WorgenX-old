@@ -58,5 +58,6 @@ typedef struct config
 {
 
     int16_t mode;
+    char *directory;
 
 } CONFIG;

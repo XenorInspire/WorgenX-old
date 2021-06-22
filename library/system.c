@@ -30,7 +30,7 @@ char *userInput(int8_t mode)
     if (userText[strlen(userText) - 1] == '\n')
         userText[strlen(userText) - 1] = '\0';
 
-    if(mode == EXT)
+    if (mode == EXT)
         verifyExtension(userText);
 
     return userText;
@@ -128,4 +128,18 @@ int64_t passwordBenchmark(PASSWD_CONFIG *benchPasswdConfig)
     }
 
     return nbPasswd;
+}
+
+/* This function is charged to save the password(s) randomly generated */
+void saveRandomPasswd(char **content, int64_t size, char *directory)
+{
+
+    FILE *backup;
+    backup = fopen(directory, "ab");
+    checkFile(backup);
+
+    for (int64_t i = 0; i < size; i++)
+        fprintf(backup, "%s \n", content[i]);
+
+    fclose(backup);
 }

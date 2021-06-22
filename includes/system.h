@@ -35,3 +35,6 @@ void savePasswd(FILE *log, char *passwd);
 
 /* This function is charged to calculate how many passwords the CPU is able to generate depending on the system time */
 int64_t passwordBenchmark(PASSWD_CONFIG *benchPasswdConfig);
+
+/* This function is charged to save the password(s) randomly generated */
+void saveRandomPasswd(char **content, int64_t size, char *directory);

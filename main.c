@@ -74,7 +74,7 @@ void encryptFeature()
 }
 
 /* This function is charged to load wordlist generation functionality */
-void wordlistFeature()
+void wordlistFeature(CONFIG *configWorgenX)
 {
     char choice = '1';
     GEN_CONFIG wordlistConfig;
@@ -104,20 +104,18 @@ void wordlistFeature()
 }
 
 /* This function is charged to load the password generation functionality */
-void passwordFeature()
+void passwordFeature(CONFIG *configWorgenX)
 {
 
     char choice = '1';
+    char saveChoice = 0;
     PASSWD_CONFIG passwordConfig;
 
     while (choice == '1')
     {
 
         while (allocatePasswdConfig(&passwordConfig) == false)
-        {
-
             printf("Please, select at least one type of character.\n");
-        }
 
         printf("Specify a valid length\n");
         emptyBuffer();
@@ -125,17 +123,37 @@ void passwordFeature()
         printf("How many passwords do you want to generate ?\n");
         passwordConfig.nbPassword = validNumericValue();
 
+        char **allPasswords = malloc(sizeof(char *) * passwordConfig.nbPassword);
+        checkPtrPtr(allPasswords);
+
         for (int64_t m = 0; m < passwordConfig.nbPassword; m++)
         {
 
+            allPasswords[m] = malloc(sizeof(char) * (passwordConfig.length + 1));
+            checkPtr(allPasswords[m]);
+
             passwordConfig.content = randPasswd(&passwordConfig);
             printf("Your password : %s\n", passwordConfig.content);
+            strcpy(allPasswords[m], passwordConfig.content);
             free(passwordConfig.content);
         }
 
+        printf("\n Do you want to save the password(s) ?\n");
+        printf("1 : Yes\n0 : No \n");
+        scanf("%c", &saveChoice);
+
+        if (saveChoice == '1')
+            saveRandomPasswd(allPasswords, passwordConfig.nbPassword, configWorgenX->directory);
+
+        emptyBuffer();
         printf("\n Do you want to generate another password ?\n");
         printf("1 : Yes\n0 : No \n");
         scanf("%c", &choice);
+
+        for (int64_t c = 0; c < passwordConfig.nbPassword; c++)
+            free(allPasswords[c]);
+
+        free(allPasswords);
     }
 }
 
@@ -170,8 +188,8 @@ int main(int argc, char const *argv[])
         printf("\n   WorgenX by Xen0rInspire \n");
         displayTitle(30);
 
-        printf("\n1 : Create a wordlist \n");
-        printf("2 : Generate a random password \n");
+        printf("\n1 : Create wordlist(s) \n");
+        printf("2 : Generate random password(s) \n");
         printf("3 : Hash plaintext (sha256) \n");
         printf("4 : Benchmark CPU\n");
         printf("0 : Exit WorgenX\n");
@@ -180,11 +198,11 @@ int main(int argc, char const *argv[])
         switch (choice)
         {
         case '1':
-            wordlistFeature();
+            wordlistFeature(&configWorgenX);
             break;
 
         case '2':
-            passwordFeature();
+            passwordFeature(&configWorgenX);
             break;
 
         case '3':
@@ -198,6 +216,8 @@ int main(int argc, char const *argv[])
 
         emptyBuffer();
     }
+
+    free(configWorgenX.directory);
 
     return 0;
 }

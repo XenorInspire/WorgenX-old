@@ -12,3 +12,6 @@ void generateConfigFile();
 
 /* Check all the values of the configuration file */
 int8_t verifyValues(CONFIG *configWorgenX);
+
+/* Extract the string value of the parameter from the configuration file */
+char *findStringValue(char *lineConfig);
