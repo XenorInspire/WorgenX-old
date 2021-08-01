@@ -83,9 +83,7 @@ void wordlistFeature(CONFIG *configWorgenX)
     {
 
         while (allocateConfig(&wordlistConfig) == false)
-        {
             printf("Please, select at least one type of character.\n");
-        }
 
         wordlistConfig.fixedSize == true ? printf("Specify a valid length \n") : printf("Specify a valid max length\n");
         emptyBuffer();

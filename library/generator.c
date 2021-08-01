@@ -204,15 +204,10 @@ void createPasswd(WDL_CHARS *wordlistContent)
             count = 0;
 
         if (wordlistContent->wordlistConfig->encrypt == true)
-        {
-
             savePasswd(wordlistContent->wordlistConfig->log, mainEncrypt(passwd));
-        }
         else
-        {
-
             savePasswd(wordlistContent->wordlistConfig->log, passwd);
-        }
+
     }
 
     free(passwd);
