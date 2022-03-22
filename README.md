@@ -14,7 +14,7 @@ Then, add GCC in your environmental variables.
 
 `apt install gcc` (debian distribution)
 
-`yum install gcc` (redhat distribution)
+`dnf install gcc` (redhat distribution)
 
 ### For MacOS :
 
