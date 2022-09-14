@@ -8,13 +8,13 @@ A wordlist generator with several functionalities
 
 Install MinGW (gcc compilator for windows) at https://sourceforge.net/projects/mingw/
 <br>
-Then, add GCC in your environmental variables.
+Then, add GCC in your environment variables.
 
 ### For Linux :
 
-`apt install gcc` (debian distribution)
+`apt install gcc -y` (debian distribution)
 
-`dnf install gcc` (redhat distribution)
+`dnf install gcc -y` (redhat distribution)
 
 ### For MacOS :
 
