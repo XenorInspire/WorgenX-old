@@ -1,6 +1,9 @@
 # WorgenX
 
-A wordlist generator with several functionalities
+A wordlist generator with several functionalities.
+
+> [!NOTE] 
+> This project isn't maintained anymore, please check the <a href="https://github.com/XenorInspire/WorgenX">new version of WorgenX</a>, fully rewritten in Rust with major improvements.
 
 # Requirements
 
